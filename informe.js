@@ -183,7 +183,7 @@ function construir(d, X) {
 X = X || {};
 var t = d.trabajador || {}, srv = d._srv || {}, lk = esLK(d), les = lesion(d);
 var fEv = aFecha(d.fecha) || aFecha(d.fechaDMA), cont = [], nSec = 0;
-var cliente = s(X.cliente) || 'CONSTRUCTOR CENTER';
+var cliente = s(X.cliente) || 'GRUPO SAN IGNACIO';
 var sec = function (tit, nec) { nSec++; return tituloSeccion(nSec, tit, nec); };
 var secNum = {};
 cont.push(cajaRedonda([{ text: 'REPORTE E INVESTIGACIÓN DE EVENTO', color: '#fff', bold: true, fontSize: 17 },
