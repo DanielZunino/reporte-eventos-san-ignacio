@@ -43,7 +43,7 @@ ol{font-size:14px;color:#33435c;padding-left:20px}
 /* Puente: fuera de Google (GitHub) usa la API del servidor sin sesión de Chrome */
 (function(){
   if(window.google&&google.script&&google.script.run)return;
-  var API='https://script.google.com/macros/s/AKfycbyFetoPIT053n1kiihmhFB5XhUF9sti1t96umwnhKn2rIe2oseukyDzn1EZCLtHV7Qx/exec';
+  var API='https://script.google.com/macros/s/AKfycbx4M-3NKo77xQ6qrOZPIIraLwCLV7e8bQPSXV1tAGbpxyYU6QBSAbpbxd7wcyfuuH_9SQ/exec';
   function runner(ok,ko){return new Proxy({},{get:function(_,fn){
     if(fn==='withSuccessHandler')return function(h){return runner(h,ko)};
     if(fn==='withFailureHandler')return function(h){return runner(ok,h)};
