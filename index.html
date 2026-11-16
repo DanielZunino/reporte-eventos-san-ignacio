@@ -313,7 +313,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 <div id="login" class="card">
   <h2 style="justify-content:center">Acceso al sistema</h2>
   <div class="in">
-    <p>Reporte e investigación de eventos<br><b>Constructor Center</b></p>
+    <p>Reporte e investigación de eventos<br><b>Grupo San Ignacio</b></p>
     <input id="usuario" placeholder="Usuario" autocomplete="username">
     <input id="clave" type="password" placeholder="Clave (nombre + año de nacimiento, ej: daniel1987)" autocomplete="current-password" onkeydown="if(event.key==='Enter')entrar()">
     <div style="display:flex;justify-content:space-between;font-size:14px;margin:4px 2px">
@@ -410,7 +410,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
       <div id="afectados"></div>
       <button type="button" class="btn sm gr" style="margin-top:6px" onclick="addAfectado()">+ Agregar otro afectado</button>
     </div>
-    <datalist id="empresas"><option>Constructor Center</option><option>Full Rental Ltda.</option><option>Sotraman Ltda.</option><option>Solintev</option><option>Sopreser Ltda.</option></datalist>
+    <datalist id="empresas"><option>Agroexportaciones Chile</option><option>Lácteos San Ignacio</option><option>Inversiones San Ignacio</option><option>Agrícola San Ignacio</option></datalist>
   </div></div>
 
   <!-- INICIO: DECLARACIÓN DEL TRABAJADOR -->
@@ -577,7 +577,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
       <div class="tl3">
         <div class="tlc a"><label>⬅ ANTES <small>qué hacía, dónde, con qué</small></label><textarea id="dAntes" oninput="syncDesc()" placeholder="Ej: A las 10:30 Juan bajaba de la rampla con una caja grande."></textarea></div>
         <div class="tlc d"><label>⚡ DURANTE <small>qué pasó exactamente</small></label><textarea id="dDurante" oninput="syncDesc()" placeholder="Ej: El piso tenía aceite, se resbaló y se dobló el tobillo derecho."></textarea></div>
-        <div class="tlc s"><label>➡ DESPUÉS <small>qué se hizo, cómo quedó</small></label><textarea id="dDespues" oninput="syncDesc()" placeholder="Ej: Lo llevaron a la Mutual. Se limpió el aceite."></textarea></div>
+        <div class="tlc s"><label>➡ DESPUÉS <small>qué se hizo, cómo quedó</small></label><textarea id="dDespues" oninput="syncDesc()" placeholder="Ej: Lo llevaron a la ACHS. Se limpió el aceite."></textarea></div>
       </div>
       <div class="tlb"><button type="button" class="btn sm gr" onmousedown="event.preventDefault()" onclick="negrita()">𝐁 Destacar lo que seleccionaste</button><button type="button" class="btn sm" id="bArmarLinea" onclick="armarLinea(true)">✨ Armar con los datos del reporte</button><button type="button" class="btn sm gr" id="bUsarDecl" onclick="invUsarDecl()">📋 Copiar la declaración del trabajador en DURANTE</button></div><div class="info" id="tlInfo" style="margin-top:6px">Los recuadros se llenan solos con lo que informó el trabajador (fecha, hora, lugar, labor, relato y atención). Revise y corrija lo que falte.</div>
       <small style="color:#666">Lo destacado sale en negrita en el informe (por ejemplo, lo que muestra un video).</small>
@@ -765,7 +765,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 /* Puente: fuera de Google (GitHub) usa la API del servidor sin sesión de Chrome */
 (function(){
   if(window.google&&google.script&&google.script.run)return;
-  var API='https://script.google.com/macros/s/AKfycbyFetoPIT053n1kiihmhFB5XhUF9sti1t96umwnhKn2rIe2oseukyDzn1EZCLtHV7Qx/exec';
+  var API='https://script.google.com/macros/s/AKfycbx4M-3NKo77xQ6qrOZPIIraLwCLV7e8bQPSXV1tAGbpxyYU6QBSAbpbxd7wcyfuuH_9SQ/exec';
   function runner(ok,ko){return new Proxy({},{get:function(_,fn){
     if(fn==='withSuccessHandler')return function(h){return runner(h,ko)};
     if(fn==='withFailureHandler')return function(h){return runner(ok,h)};
@@ -800,7 +800,7 @@ var CAMPOS_T=['nombre','run','empresa','sucursal','cargo','ingreso','nacimiento'
 var PENDS=['Pendiente','No aplica','No sé'];
 var PEND_F=['hora','area','lugarDireccion','oficio','horaEntrada','horaSalida','contrato','estatura','peso','labor','deporte','tipoLesion','centro','folioDiat','motivoNegativa',
   'trayectoOrigen','trayectoDestino','trayectoMedio','trayectoPrueba','danoBien','danoCodigo','danoCosto','epInicio','epExposicion','lkDenunciado','t_direccion','t_comuna','t_telefono','t_salud','t_emergencia','t_jefatura','t_nacionalidad'];
-var PROTO=[['suspension','Suspender faenas afectadas'],['inspeccion','Aviso a la Inspección del Trabajo'],['seremi','Aviso a la SEREMI de Salud'],['mutual','Aviso a la Mutual']];
+var PROTO=[['suspension','Suspender faenas afectadas'],['inspeccion','Aviso a la Inspección del Trabajo'],['seremi','Aviso a la SEREMI de Salud'],['mutual','Aviso a la ACHS']];
 var MODO_INI='', AVISOS=null, VOZA=true;   // la voz parte SIEMPRE encendida; se puede callar con el botón
 
 function $(i){return document.getElementById(i)}
@@ -1637,7 +1637,7 @@ function dlSucursales(){$('dlSuc').innerHTML=listaSuc().map(function(x){return '
 // ---------- ACCESOS DE JEFATURAS (gerentes de sucursal de la nómina) ----------
 function fonoWsp(t){var n=String(t||'').replace(/\D/g,'');if(n.length===9&&n[0]==='9')n='56'+n;else if(n.length===8)n='569'+n;return n.length>=11?n:''}
 function msgAcceso(o,X){var n=String(o.nombre||'').split(' ')[0];
-  return 'Estimado(a) '+n+':\n\nJunto con saludarle, le informo que ya tiene acceso al Sistema de Reporte e Investigación de Eventos de Constructor Center. Desde ahí podrá registrar los accidentes, incidentes y daños materiales de su sucursal, y enviar al trabajador el enlace para su declaración.\n\n'+
+  return 'Estimado(a) '+n+':\n\nJunto con saludarle, le informo que ya tiene acceso al Sistema de Reporte e Investigación de Eventos de Grupo San Ignacio. Desde ahí podrá registrar los accidentes, incidentes y daños materiales de su sucursal, y enviar al trabajador el enlace para su declaración.\n\n'+
     '• Enlace del sistema: '+X.portal+'\n• Usuario: '+o.usuario+'\n• Clave: '+o.clave+'\n\n'+
     'Ante un accidente, lo primero es que el trabajador complete su declaración escaneando el código QR o abriendo este enlace: '+X.qr+'\n'+
     'Si el trabajador no puede hacerlo, usted puede crear el caso en el sistema y enviarle el enlace para que la complete y firme.\n\nSaludos cordiales.\nDaniel Zunino Urrutia\nAsesor en Prevención de Riesgos\nIntegra Prevención SpA'}
@@ -1648,7 +1648,7 @@ function verAccesos(){toast('Revisando los gerentes de sucursal de la nómina...
       '<p style="margin:0 0 8px"><a target="_blank" href="'+esc(X.qr)+'">Enlace del QR para trabajadores</a></p>';
     if(!X.lista.length)h+='<div class="info">No encontré personas con cargo "Gerente" en la nómina.</div>';
     X.lista.forEach(function(o,ix){
-      var asunto='Acceso al Sistema de Reporte de Eventos — Constructor Center',txt=msgAcceso(o,X),w=fonoWsp(o.telefono);
+      var asunto='Acceso al Sistema de Reporte de Eventos — Grupo San Ignacio',txt=msgAcceso(o,X),w=fonoWsp(o.telefono);
       h+='<div class="acj"><b>'+esc(o.nombre)+'</b>'+(o.nuevo?'<span class="nv">nuevo</span>':'')+'<div class="sb">'+esc(o.cargo||'')+' · '+esc(o.sucursal||'')+(o.activo===false?' · <b style="color:var(--ro)">INACTIVO</b>':'')+'</div>'+
         (o.error?'<div class="sb" style="color:var(--ro)">⚠ '+esc(o.error)+'</div>':
         '<div class="cred">Usuario: <b>'+esc(o.usuario)+'</b><br>Clave: <b>'+esc(o.clave)+'</b></div>'+
@@ -1875,7 +1875,7 @@ function guardar(op){op=op||{};
       '<a class="btn sm" target="_blank" href="'+r.carpeta+'">Abrir carpeta del caso</a>'+
       (r.registro?'<a class="btn sm gr" target="_blank" href="'+r.registro+'">Planilla de registro</a>':'')+
       '<p style="margin:8px 0 0"><button class="btn sm" onclick="editar(\''+r.id+'\')">Seguir completando este caso</button><button class="btn sm gr" onclick="nuevoCaso()">Registrar otro caso</button></p></div>'+
-      (r.linkTrab?'<div class="info"><b>📲 Ahora envíale el link al trabajador.</b> Cuando lo complete y firme, el caso se actualiza solo y te llega una alerta.'+(docOAL()?' A él le llega un resumen con los datos que le piden en la Mutual para la '+docOAL()+'.':'')+'</div>'+invBox(r.linkTrab,d.trabajador.nombre,'trabajador',v('invFono')):'')+
+      (r.linkTrab?'<div class="info"><b>📲 Ahora envíale el link al trabajador.</b> Cuando lo complete y firme, el caso se actualiza solo y te llega una alerta.'+(docOAL()?' A él le llega un resumen con los datos que le piden en la ACHS para la '+docOAL()+'.':'')+'</div>'+invBox(r.linkTrab,d.trabajador.nombre,'trabajador',v('invFono')):'')+
       linkBox(r.link,(d.solicitud&&d.solicitud.rol==='Testigo')?d.solicitud.nombre:d.trabajador.nombre,r.id);
     cargarBanner();
     res.scrollIntoView({behavior:'smooth'});
@@ -2017,7 +2017,7 @@ function notaVideo(id,t){llamar('notaMedio',TOKEN,EDIT.id,id,t).then(function(vs
 function quitarVideo(id){confirma('¿Quitar este video del caso?','El archivo queda en la carpeta del caso, pero ya no aparece en el informe.','SÍ, quitar',function(){llamar('quitarMedio',TOKEN,EDIT.id,id).then(function(vs){EDIT._srv.videos=vs;pintarVideos()}).catch(err)},true)}
 
 // ---------- INFORME PDF CON EL FORMATO APROBADO (se arma aquí y se guarda en Drive) ----------
-var BASE_PUB='https://danielzunino.github.io/reporte-eventos-constructor/',LIBS=null;
+var BASE_PUB='https://danielzunino.github.io/reporte-eventos-san-ignacio/',LIBS=null;
 function cargaScript(src){return new Promise(function(ok,ko){var s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=function(){ko(new Error('No se pudo cargar '+src))};document.head.appendChild(s)})}
 function bufB64(buf){var u=new Uint8Array(buf),s='',k=0x8000;for(var i=0;i<u.length;i+=k)s+=String.fromCharCode.apply(null,u.subarray(i,i+k));return btoa(s)}
 function cargarLibsInforme(){if(LIBS)return LIBS;
@@ -2111,10 +2111,10 @@ function asisResponder(q){var n=norm2(q),doc=docOAL(),tp=ST.tipos||[];
   if(/FACTOR(ES)? DEL TRABAJO|ORGANIZACION/.test(n))return R('<b>Factores del trabajo</b>: lo que falló en la organización: supervisión, procedimiento, mantención, equipos, capacitación, planificación.');
   if(/RESPONSABLE/.test(n))return R('Por defecto el responsable de cada medida es el <b>encargado de la sucursal</b> (no el asesor). Puedes agregar a más de una persona: escribe el nombre en "+ Agregar responsable" y presiona Enter. Para quitar a alguien toca la ✕ de su nombre.');
   if(/MEDIDA|QUE HAGO PARA QUE NO|CORRECTIV/.test(n))return R('Cada causa del árbol necesita una medida con <b>responsable</b> y <b>plazo</b>. Las mejores medidas, en orden: <ol><li>Eliminar el peligro.</li><li>Cambiar el equipo o el método por uno más seguro.</li><li>Controles de ingeniería (protecciones, alarmas, espejos).</li><li>Procedimientos, señalización y supervisión.</li><li>Capacitación y EPP (sola es la más débil: úsala junto a otra).</li></ol>Las <b>medidas inmediatas</b> que ya anotaste también cuentan: en el paso 4 solo indicas a qué causa atienden.',function(){invPaso(4)});
-  if(/DIAT/.test(n))return R('La <b>DIAT</b> es la denuncia de <b>accidente</b> (del trabajo o de trayecto) ante la Mutual, dentro de 24 horas. '+(doc.indexOf('DIAT')>-1?'En este caso <b>sí corresponde</b>.':tp.length?'En este caso <b>no corresponde</b>, porque no se marcó un accidente con persona lesionada.':'Corresponde solo si marcas accidente del trabajo o de trayecto.'));
-  if(/DIEP|ENFERMEDAD/.test(n))return R('La <b>DIEP</b> es la denuncia de <b>posible enfermedad profesional</b>; el trabajador va a evaluación a la Mutual. '+(doc.indexOf('DIEP')>-1?'En este caso <b>sí corresponde</b>.':tp.length?'En este caso <b>no corresponde</b>.':'Corresponde solo si marcas posible enfermedad profesional.'));
+  if(/DIAT/.test(n))return R('La <b>DIAT</b> es la denuncia de <b>accidente</b> (del trabajo o de trayecto) ante la ACHS, dentro de 24 horas. '+(doc.indexOf('DIAT')>-1?'En este caso <b>sí corresponde</b>.':tp.length?'En este caso <b>no corresponde</b>, porque no se marcó un accidente con persona lesionada.':'Corresponde solo si marcas accidente del trabajo o de trayecto.'));
+  if(/DIEP|ENFERMEDAD/.test(n))return R('La <b>DIEP</b> es la denuncia de <b>posible enfermedad profesional</b>; el trabajador va a evaluación a la ACHS. '+(doc.indexOf('DIEP')>-1?'En este caso <b>sí corresponde</b>.':tp.length?'En este caso <b>no corresponde</b>.':'Corresponde solo si marcas posible enfermedad profesional.'));
   if(/GRAVE|FATAL/.test(n))return R('Es <b>grave</b> si obliga a reanimación o rescate, hay caída de más de 1,8 m, amputación, o afecta a varios trabajadores. Si es grave o fatal: suspender la faena, avisar de inmediato a la Inspección del Trabajo y a la SEREMI de Salud, y registrar cada aviso en la tarjeta roja.');
-  if(/KARIN|ACOSO|VIOLENCIA/.test(n))return R('En <b>Ley Karin</b>: medidas de resguardo de inmediato, ofrecer atención psicológica de la Mutual y avisar a la Dirección del Trabajo dentro de 3 días hábiles. El caso es reservado: solo lo ve el administrador.');
+  if(/KARIN|ACOSO|VIOLENCIA/.test(n))return R('En <b>Ley Karin</b>: medidas de resguardo de inmediato, ofrecer atención psicológica de la ACHS y avisar a la Dirección del Trabajo dentro de 3 días hábiles. El caso es reservado: solo lo ve el administrador.');
   if(/TESTIGO/.test(n))return R('En el paso 2 toca <b>+ Agregar testigo</b>, escribe su nombre o RUT y toca <b>📲 Pedirle su declaración por link</b>: le llega un enlace, responde desde su celular y firma con el dedo. Su relato entra solo al caso.',function(){invPaso(2)});
   if(/FOTO|VIDEO|EVIDENCIA|PRUEBA|GRABACION|CAMARA/.test(n))return R('En la tarjeta <b>8. Fotos y videos</b> toca <b>📷 Agregar fotos o videos</b>. Escribe debajo de cada foto qué muestra y ordénalas con ◀ ▶. Los videos se suben a la carpeta del caso y el informe los menciona con su enlace.',function(){$('cFotos').scrollIntoView({behavior:'smooth',block:'center'})});
   if(/CONCLUSION/.test(n))return R('En el paso 5 toca <b>✨ Proponer conclusiones</b>: te dejo 5 puntos armados con los datos del caso (el evento, la causa principal, las condiciones, los antecedentes del trabajador y las medidas). Revísalos y corrige lo que haga falta.',function(){invPaso(5)});
