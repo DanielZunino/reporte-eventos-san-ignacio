@@ -186,8 +186,10 @@ var fEv = aFecha(d.fecha) || aFecha(d.fechaDMA), cont = [], nSec = 0;
 var cliente = s(X.cliente) || 'GRUPO SAN IGNACIO';
 var sec = function (tit, nec) { nSec++; return tituloSeccion(nSec, tit, nec); };
 var secNum = {};
-cont.push(cajaRedonda([{ text: 'REPORTE E INVESTIGACIÓN DE EVENTO', color: '#fff', bold: true, fontSize: 17 },
-{ text: cliente.toUpperCase(), color: C.na, bold: true, fontSize: 9, margin: [0, 4, 0, 0] }], 62, { fondo: C.az, borde: C.az, r: 6, pad: 13 }));
+var cabTxt = [{ text: 'REPORTE E INVESTIGACIÓN DE EVENTO', color: '#fff', bold: true, fontSize: 17 },
+{ text: cliente.toUpperCase(), color: C.na, bold: true, fontSize: 9, margin: [0, 4, 0, 0] }];
+var cabLogo = X.logo && X.logo.data ? [{ columns: [{ width: '*', stack: cabTxt }, { width: 68, table: { widths: [64], body: [[{ image: X.logo.data, fit: [58, 28], alignment: 'center', margin: [3, 4, 3, 4], fillColor: '#ffffff' }]] }, layout: 'noBorders' }] }] : cabTxt;
+cont.push(cajaRedonda(cabLogo, 62, { fondo: C.az, borde: C.az, r: 6, pad: 13 }));
 var tipoTxt = (d.tipos || []).join(' + ') + (d.gravedad ? ' (' + d.gravedad.toLowerCase() + ')' : '');
 var celda = function (l, v) { return { stack: [{ text: l, fontSize: 6.4, color: C.gris, bold: true, characterSpacing: 0.3 }, { text: v, bold: true, fontSize: 10, color: C.tx, margin: [0, 3, 0, 0] }], fillColor: C.tira }; };
 cont.push({ margin: [0, 9, 0, 0], table: { widths: [150, 98, 92, '*'], body: [[celda('EMPRESA', ni(t.empresa, true)), celda('SUCURSAL', titulo(t.sucursal || d.sucursal)), celda('CASO N°', s(d.id)), celda('TIPO DE EVENTO', tipoTxt)]] },
