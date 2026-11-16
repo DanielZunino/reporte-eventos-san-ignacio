@@ -117,7 +117,7 @@ main{padding-bottom:240px!important}
 /* Puente: fuera de Google (GitHub) usa la API del servidor sin sesión de Chrome */
 (function(){
   if(window.google&&google.script&&google.script.run)return;
-  var API='https://script.google.com/macros/s/AKfycbyFetoPIT053n1kiihmhFB5XhUF9sti1t96umwnhKn2rIe2oseukyDzn1EZCLtHV7Qx/exec';
+  var API='https://script.google.com/macros/s/AKfycbx4M-3NKo77xQ6qrOZPIIraLwCLV7e8bQPSXV1tAGbpxyYU6QBSAbpbxd7wcyfuuH_9SQ/exec';
   function runner(ok,ko){return new Proxy({},{get:function(_,fn){
     if(fn==='withSuccessHandler')return function(h){return runner(h,ko)};
     if(fn==='withFailureHandler')return function(h){return runner(ok,h)};
@@ -132,7 +132,7 @@ main{padding-bottom:240px!important}
 </script>
 <script>
 // ================== DATOS ==================
-var INFO={cliente:'',oal:'tu mutualidad',fonoOal:'',inscripcion:'',lugares:[],actividades:[]};
+var INFO={cliente:'',oal:'tu organismo administrador (ACHS)',fonoOal:'',inscripcion:'',lugares:[],actividades:[]};
 var R={}, YO=null, PILA=[], ACT='inicio', FIRMA=null, ENVIANDO=false, SES='', SESNOM='';
 var MODO='qr', TK='', INV=null, CASO=null, VOZ=true; // la voz parte siempre encendida // MODO: qr (QR/portal) · trab (link al trabajador) · aporte (testigos, jefatura, otros)
 var CALIDAD={directo:'testigo directo',indirecto:'testigo indirecto',jefatura:'jefatura directa',otro:'persona que aporta información'};
@@ -163,7 +163,7 @@ function has(t){return (R.tipos||[]).indexOf(t)>-1}
 function acc(){return has(T_ACC)||has(T_TRA)}
 function lesion(){return acc()||has(T_EP)}
 function lk(){return has(T_LK)}
-// Documento ante la Mutual según lo que se marcó: DIAT (accidente), DIEP (posible enfermedad), ninguno (daño, incidente)
+// Documento ante la ACHS según lo que se marcó: DIAT (accidente), DIEP (posible enfermedad), ninguno (daño, incidente)
 function docT(){var a=acc(),e=has(T_EP);return a&&e?'DIAT y DIEP':a?'DIAT':e?'DIEP':''}
 function hoyISO(o){var h=new Date();h.setDate(h.getDate()-(o||0));return new Date(h-h.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
 function dma(iso){var p=String(iso||'').split('-');return p.length===3?p[2]+'-'+p[1]+'-'+p[0]:iso}
@@ -273,7 +273,7 @@ function cuerpoToca(p){var a=R.partes=(R.partes||[]).filter(function(x){return x
 var PASOS={
  inicio:{nav:0,guia:'Toca el botón <b>Comenzar</b> para empezar',html:function(){
    if(MODO==='trab')return '<div class="triste">😔</div>'+titulo('Hola '+esc(INV.saludo)+', lamentamos lo que te pasó','Prevención registró: <b>'+esc(CASO.tipos.join(' + '))+'</b> del '+esc(CASO.fechaDMA||dma(CASO.fecha))+'. Ahora necesitamos <b>tu declaración</b>.')+
-     caja('info','<b>¿Para qué es esto?</b><ul>'+(docT()?'<li>Con tus respuestas se llena la <b>'+docT()+'</b> para la Mutual.</li>':'<li>Con tus respuestas queda registrado lo que pasó, para investigarlo y que no se repita.</li>')+'<li>Te vamos a guiar pregunta por pregunta. Si algo no lo sabes, toca <b>No sé</b>.</li><li>Al final firmas con el dedo y te llega un resumen '+(docT()?'con los datos que te piden en la Mutual.':'de lo que informaste.')+'</li></ul>')+
+     caja('info','<b>¿Para qué es esto?</b><ul>'+(docT()?'<li>Con tus respuestas se llena la <b>'+docT()+'</b> para la ACHS.</li>':'<li>Con tus respuestas queda registrado lo que pasó, para investigarlo y que no se repita.</li>')+'<li>Te vamos a guiar pregunta por pregunta. Si algo no lo sabes, toca <b>No sé</b>.</li><li>Al final firmas con el dedo y te llega un resumen '+(docT()?'con los datos que te piden en la ACHS.':'de lo que informaste.')+'</li></ul>')+
      '<button class="op on" onclick="siguiente()"><span class="ic">▶</span><span>Comenzar mi declaración</span></button>';
    if(MODO==='aporte')return '<div class="grande">🤝</div>'+titulo('Hola '+esc(INV.saludo)+', necesitamos tu ayuda','Se está investigando un caso: <b>'+esc(CASO.tipos.join(' + '))+'</b> del '+esc(CASO.fechaDMA||dma(CASO.fecha))+' en <b>'+esc(CASO.sucursal)+'</b>'+(CASO.trabajador?' (afectado: '+esc(CASO.trabajador)+')':'')+'.')+
      caja('info','Te pedimos tu aporte como <b>'+esc(CALIDAD[INV.tipo]||'colaborador')+'</b>.<ul><li>No se busca culpables: se busca la causa para que no vuelva a pasar.</li><li>Son pocas preguntas. Si algo no lo sabes, toca <b>No sé</b>.</li><li>Al final firmas con el dedo.</li></ul>')+
@@ -331,7 +331,7 @@ var PASOS={
  },ok:function(){return !!R.urgente||'Elige una opción'}},
 
  datos:{ver:function(){return !lk()},alt:1,campos:['direccion','comuna','telefono'],guia:'Revisa tus datos. Si algo cambió, corrígelo y toca <b>Siguiente</b>',html:function(){
-   return titulo('Revisa tus datos',(docT()?'La Mutual los pide para la <b>'+docT()+'</b>. ':'Son para poder contactarte. ')+'Si algo cambió, corrígelo.')+
+   return titulo('Revisa tus datos',(docT()?'La ACHS los pide para la <b>'+docT()+'</b>. ':'Son para poder contactarte. ')+'Si algo cambió, corrígelo.')+
      '<label class="l">Dirección de tu casa</label>'+campo('direccion','Calle y número')+
      '<label class="l">Comuna</label>'+campo('comuna','Ej: Temuco')+
      '<label class="l">Teléfono</label>'+campo('telefono','Ej: 9 1234 5678','tel')+
@@ -350,7 +350,7 @@ var PASOS={
  },ok:function(){return !!(R.momento||R.horaExacta)||'Elige una opción'}},
 
  horario:{ver:function(){return acc()},alt:1,campos:['horaEntrada','horaSalida'],guia:'Pon la hora en que entraste y salías ese día',html:function(){
-   return titulo('¿Cuál era tu horario ese día?','Lo pide la Mutual. Si no te acuerdas exacto, pon lo más cercano.')+
+   return titulo('¿Cuál era tu horario ese día?','Lo pide la ACHS. Si no te acuerdas exacto, pon lo más cercano.')+
      '<label class="l">Hora de entrada</label>'+campo('horaEntrada','','time')+'<label class="l">Hora de salida</label>'+campo('horaSalida','','time')+altFila();
  },ok:function(){return (!!R.horaEntrada&&!!R.horaSalida)||'Pon la hora de entrada y de salida (o toca "No sé")'}},
 
@@ -373,7 +373,7 @@ var PASOS={
      '<label class="l">¿En qué sucursal o lugar?</label>'+chips('sucEvento',sucursalesEv())+
      (fuera?'':'<label class="l">¿En qué parte?</label>'+chips('lugar',INFO.lugares))+
      '<label class="l">Más detalle del lugar (opcional)</label>'+campo('lugarDetalle','Ej: pasillo 3, al lado del rack de fierros')+
-     (MODO!=='aporte'&&acc()?'<label class="l">Dirección donde pasó (la pide la Mutual)</label>'+campo('lugarDireccion','Calle, número y comuna'):'');
+     (MODO!=='aporte'&&acc()?'<label class="l">Dirección donde pasó (la pide la ACHS)</label>'+campo('lugarDireccion','Calle, número y comuna'):'');
  },ok:function(){if(!R.sucEvento)return 'Marca la sucursal o lugar donde pasó';
    if(esOtro(R.sucEvento))return !!String(R.sucEventoOtro||'').trim()||'Escribe dónde pasó (cliente, obra, calle...)';
    return !!R.lugar||'Elige en qué parte pasó'}},
@@ -705,14 +705,14 @@ function pad(id){
 // ---- Resumen + firma ----
 function resFirma(filas){
   return '<div class="res">'+filas.map(function(x){return '<div><b>'+x[0]+'</b>'+esc(x[1]||'—')+'</div>'}).join('')+'</div>'+PASOS._firma.html()}
-// ---- Datos para la Mutual ----
+// ---- Datos para la ACHS ----
 function mutualCard(){var M=R._mutual;if(!M||lk()||!lesion())return '';
   var f=function(a,b){return '<div><b>'+a+'</b>'+esc(b||'—')+'</div>'};
   var txt='CASO '+M.evento.caso+' — '+M.evento.tipo+'\nFecha: '+M.evento.fecha+' '+M.evento.hora+'\nLugar: '+M.evento.lugar+(M.evento.direccion?' ('+M.evento.direccion+')':'')+
     '\n\nEMPRESA: '+M.empresa.razon+'\nRUT empresa: '+(M.empresa.rut||'—')+'\nDirección: '+(M.empresa.direccion||'—')+'\nSucursal: '+M.empresa.sucursal+(M.empresa.dirSucursal?' — '+M.empresa.dirSucursal:'')+
     '\nActividad: '+(M.empresa.actividad||'—')+'\nOrganismo: '+M.empresa.oal+(M.empresa.adherente?' · N° adherente '+M.empresa.adherente:'')+
     '\n\nYO: '+M.trabajador.nombre+' · RUT '+M.trabajador.run+'\nCargo: '+(M.trabajador.cargo||'—')+' · Ingreso: '+(M.trabajador.ingreso||'—')+'\nHorario ese día: '+M.evento.horario;
-  return '<div class="mutual"><h3>📋 Datos para la Mutual</h3><p class="sub" style="margin:0 0 4px;font-size:14px">Muéstrale esto a la persona que te atienda en '+esc(M.empresa.oal)+'.</p>'+
+  return '<div class="mutual"><h3>📋 Datos para la ACHS</h3><p class="sub" style="margin:0 0 4px;font-size:14px">Muéstrale esto a la persona que te atienda en '+esc(M.empresa.oal)+'.</p>'+
     f('Empresa',M.empresa.razon)+f('RUT empresa',M.empresa.rut)+f('Dirección empresa',M.empresa.direccion)+f('Sucursal',M.empresa.sucursal+(M.empresa.dirSucursal?' — '+M.empresa.dirSucursal:''))+
     f('Actividad económica',M.empresa.actividad)+f('Organismo administrador',M.empresa.oal+(M.empresa.adherente?' · N° adherente '+M.empresa.adherente:''))+
     f('Tu cargo',M.trabajador.cargo)+f('Fecha de ingreso',M.trabajador.ingreso)+f('Tu horario ese día',M.evento.horario)+f('Dónde pasó',M.evento.lugar+(M.evento.direccion?' — '+M.evento.direccion:''))+'</div>'+
@@ -720,7 +720,7 @@ function mutualCard(){var M=R._mutual;if(!M||lk()||!lesion())return '';
     (String(R.correo||'').indexOf('@')>0?caja('ok','📧 También te enviamos una copia a <b>'+esc(R.correo)+'</b> con el PDF de tu declaración.'):'');
 }
 
-// ---- Descargar el PDF de la declaración (para llevarlo a la Mutual) ----
+// ---- Descargar el PDF de la declaración (para llevarlo a la ACHS) ----
 function btnPdf(){if(!R._pdf||!R._pdf.b64)return '';
   return '<button class="op pdfB" onclick="bajarPdf()"><span class="ic">⬇</span><span>Descargar mi declaración (PDF)<small>'+(lesion()&&!lk()?'Llévala a '+esc(INFO.oal)+' junto a estos datos':'Guárdala en tu celular')+'</small></span></button>'}
 function bajarPdf(){try{var b=atob(R._pdf.b64),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);
