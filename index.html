@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{--az:#0b3d91;--az2:#1565c0;--na:#f28c28;--ve:#2e7d32;--ro:#c62828;--gr:#eef2f8;--bo:#c9d3e3;--tx:#1a1a1a}
+:root{--az:#27348b;--az2:#2f5d9b;--na:#2e9a3f;--ve:#2e7d32;--ro:#c62828;--gr:#eef2f8;--bo:#c9d3e3;--tx:#1a1a1a}
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6fb;color:var(--tx);font-size:15px}
 header{background:linear-gradient(90deg,var(--az),var(--az2));color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5}
@@ -31,7 +31,7 @@ textarea{min-height:90px;resize:vertical}
 .si-no{display:flex;gap:6px;flex-wrap:wrap}
 .si-no .chip{min-width:60px;text-align:center}
 .alerta{border-left:6px solid var(--ro);background:#fdecea;color:#8e0000;padding:10px;border-radius:8px;margin:10px 0;font-weight:bold;font-size:13px}
-.info{border-left:6px solid var(--az2);background:#e3f0ff;color:#0b3d91;padding:10px;border-radius:8px;margin:10px 0;font-size:13px}
+.info{border-left:6px solid var(--az2);background:#e3f0ff;color:#27348b;padding:10px;border-radius:8px;margin:10px 0;font-size:13px}
 .trab{background:var(--gr);border-radius:10px;padding:10px;margin-top:10px}
 .sug{border:1px solid var(--bo);border-radius:8px;max-height:240px;overflow:auto;background:#fff;margin-top:4px}
 .sug div{padding:8px 10px;border-bottom:1px solid #eee;cursor:pointer}
@@ -57,11 +57,11 @@ textarea{min-height:90px;resize:vertical}
 .cuerpo>div{flex:1;max-width:220px}
 .figura{width:100%;height:auto;display:block}
 .figura .zona{stroke:#5a6780;stroke-width:1;cursor:pointer;transition:fill .15s}
-.figura .zona:hover{stroke:#f28c28;stroke-width:2.5}
+.figura .zona:hover{stroke:#2e9a3f;stroke-width:2.5}
 .figura .zona.on{stroke:#7f0000;stroke-width:2}
-.fig-t{font:bold 12px Arial;fill:#0b3d91}.fig-l{font:bold 11px Arial;fill:#f28c28}
+.fig-t{font:bold 12px Arial;fill:#27348b}.fig-l{font:bold 11px Arial;fill:#2e9a3f}
 .cuerpo-ayuda{font-size:14px;color:#5a6780;margin:6px 0 10px;text-align:center}
-.dicho{position:fixed;left:50%;top:110px;transform:translateX(-50%);background:#0b3d91;color:#fff;padding:10px 16px;border-radius:20px;font-weight:bold;z-index:30;font-size:16px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.dicho{position:fixed;left:50%;top:110px;transform:translateX(-50%);background:#27348b;color:#fff;padding:10px 16px;border-radius:20px;font-weight:bold;z-index:30;font-size:16px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 
 .otro{margin-top:6px;border-color:var(--na)!important;background:#fffaf3!important}
 .otraC{display:flex;gap:6px;margin-top:6px}.otraC input{flex:1}
@@ -100,8 +100,8 @@ table.lista tr.cl{cursor:pointer}table.lista tr.cl:hover td{background:var(--gr)
 .proto{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1.6fr;gap:6px;align-items:center;margin-bottom:6px;font-size:13px}
 .proto.hecho select{background:#e8f5e9;color:var(--ve);font-weight:bold}.proto.pend select{background:#fdecea;color:var(--ro);font-weight:bold}
 .nodo{display:grid;grid-template-columns:110px 1fr 160px 34px;gap:6px;margin-bottom:6px}
-#manoBorde{position:fixed;left:50%;transform:translateX(-50%);z-index:30;background:#f28c28;color:#fff;font:bold 15px system-ui;border-radius:24px;padding:9px 18px;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:pointer;animation:latido 1.4s infinite;border:0}
-#coachInv{position:relative;display:flex;gap:10px;align-items:flex-start;background:linear-gradient(135deg,#0b3d91,#1565c0);color:#fff;border-radius:14px;padding:10px 12px;margin-bottom:12px;box-shadow:0 4px 14px rgba(11,61,145,.25)}
+#manoBorde{position:fixed;left:50%;transform:translateX(-50%);z-index:30;background:#2e9a3f;color:#fff;font:bold 15px system-ui;border-radius:24px;padding:9px 18px;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:pointer;animation:latido 1.4s infinite;border:0}
+#coachInv{position:relative;display:flex;gap:10px;align-items:flex-start;background:linear-gradient(135deg,#27348b,#2f5d9b);color:#fff;border-radius:14px;padding:10px 12px;margin-bottom:12px;box-shadow:0 4px 14px rgba(39,52,139,.25)}
 #coachInv .av{font-size:34px;line-height:1}
 #coachInv .tx{flex:1;font-size:15px;line-height:1.35}
 #coachInv .tx b{color:#ffe082}
@@ -109,8 +109,8 @@ table.lista tr.cl{cursor:pointer}table.lista tr.cl:hover td{background:var(--gr)
 #coachInv button{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:5px 8px;font-size:12.5px;cursor:pointer;white-space:nowrap}
 #manoInv{position:absolute;z-index:9;pointer-events:none;font-size:42px;transition:top .5s ease,left .5s ease;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
 #manoInv span{display:inline-block;animation:empuja .9s infinite}
-#manoInv i{position:absolute;left:44px;top:6px;white-space:nowrap;font:bold 13px system-ui;font-style:normal;background:#f28c28;color:#fff;border-radius:8px;padding:3px 8px}
-.cfoco{outline:4px solid #f28c28 !important;outline-offset:3px;border-radius:8px}
+#manoInv i{position:absolute;left:44px;top:6px;white-space:nowrap;font:bold 13px system-ui;font-style:normal;background:#2e9a3f;color:#fff;border-radius:8px;padding:3px 8px}
+.cfoco{outline:4px solid #2e9a3f !important;outline-offset:3px;border-radius:8px}
 .nomTag{display:block;font-size:11.5px;margin-top:2px;font-weight:bold}
 .fila4>.nomTag,.fila3>.nomTag{grid-column:1/-1;order:99;margin-top:-2px}
 .nomTag.si{color:#2e7d32}.nomTag.no{color:#e65100}
@@ -118,7 +118,7 @@ table.lista tr.cl{cursor:pointer}table.lista tr.cl:hover td{background:var(--gr)
 .cursoL .sec{font-weight:bold;color:var(--az);margin:10px 0 4px;font-size:13px}
 .cursoL .cu{display:block;width:100%;text-align:left;border:2px solid var(--bo);background:#fff;border-radius:10px;padding:8px 10px;margin:4px 0;cursor:pointer;font-size:14px}
 .cursoL .cu:hover{border-color:var(--az);background:#eef4ff}
-.cursoL .cu.sug{border-color:#f28c28;background:#fff8ec}
+.cursoL .cu.sug{border-color:#2e9a3f;background:#eef8f0}
 .ipasos{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .ipasos .ip{flex:1;min-width:120px;border:2px solid var(--bo);border-radius:12px;padding:8px;text-align:center;cursor:pointer;background:#fff;font-size:13px;line-height:1.25}
 .ipasos .ip b{display:block;font-size:20px}
@@ -145,7 +145,7 @@ table.lista tr.cl{cursor:pointer}table.lista tr.cl:hover td{background:var(--gr)
 .caja small{display:block;font-weight:normal;color:#8a5a00;margin-top:3px}
 @keyframes latido{0%,100%{box-shadow:0 0 0 0 rgba(242,140,40,.5)}50%{box-shadow:0 0 0 6px rgba(242,140,40,0)}}
 .arbol .lienzo{overflow-x:auto;padding:8px 4px 12px;direction:rtl}.arbol .lienzo>*{direction:ltr}
-.asis{background:linear-gradient(180deg,#fff8ec,#fff);border:2px solid var(--na);border-radius:14px;padding:14px;margin:6px 0 10px}
+.asis{background:linear-gradient(180deg,#eef8f0,#fff);border:2px solid var(--na);border-radius:14px;padding:14px;margin:6px 0 10px}
 .asis .paso{font-size:12px;font-weight:bold;color:var(--na);letter-spacing:.5px}
 .asis h4{margin:4px 0 8px;font-size:17px;color:var(--az)}
 .asis .preg{background:#fff;border-left:5px solid var(--az);padding:8px 10px;border-radius:8px;font-size:15px;margin:6px 0}
@@ -195,7 +195,7 @@ table.lista tr.cl{cursor:pointer}table.lista tr.cl:hover td{background:var(--gr)
 .acj .sucE{margin:4px 0 8px}.acj .sucE label{font-size:12px;color:#5a6780;display:block;margin-bottom:3px}.acj .sucE .fx{display:flex;gap:6px}
 .acj .sucE input{flex:1;min-width:0;padding:7px 8px;border:1px solid #cfd8e6;border-radius:8px;font-size:14px}.acj .sucE button{border:0;border-radius:8px;background:var(--az);color:#fff;font-weight:bold;padding:0 12px;cursor:pointer}
 .acj .bts{display:flex;gap:8px;flex-wrap:wrap}.acj .bts a{flex:1 1 120px;min-width:0;text-align:center;padding:9px;border-radius:10px;font-weight:bold;text-decoration:none;font-size:14px}
-.acj .bts .ma{background:#0b3d91;color:#fff}.acj .bts .wa{background:#25d366;color:#fff}.acj .bts .no{background:#e0e4ec;color:#8a96aa;pointer-events:none}
+.acj .bts .ma{background:#27348b;color:#fff}.acj .bts .wa{background:#25d366;color:#fff}.acj .bts .no{background:#e0e4ec;color:#8a96aa;pointer-events:none}
 .modal .bt{display:flex;gap:10px}.modal .bt button{flex:1;padding:12px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
 .acc{white-space:nowrap}.acc button{border:0;border-radius:8px;padding:5px 8px;margin:2px;cursor:pointer;font-size:12px;font-weight:bold}
 .tab.limpia{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.5)}
@@ -229,7 +229,7 @@ main{padding-bottom:200px}
 #coachInv{position:relative!important;top:auto!important}
 #manoBorde,#manoInv i{display:none!important} /* la manito solo aparece al costado del campo (si hay margen), nunca encima de las opciones */
 #coachInv .cbt{display:flex;flex-direction:column;gap:4px}
-#coachInv .asisB{background:#ffe082!important;color:#0b3d91!important;font-weight:bold}
+#coachInv .asisB{background:#ffe082!important;color:#27348b!important;font-weight:bold}
 textarea{overflow:hidden;resize:none;min-height:64px}
 .chip.on,.si-no .chip.on,.vp .chip.on{background:var(--az)!important;border-color:var(--az)!important;color:#fff!important;font-weight:bold;box-shadow:0 0 0 2px #c9dafc}
 .chip.on::before{content:"✔ "}
@@ -237,7 +237,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 .malo{border:2px solid var(--ro)!important;background:#fff5f5!important}
 .tl3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
 .tlc{border-radius:10px;padding:8px;border:2px solid}
-.tlc.a{border-color:#1565c0;background:#eef4fd}.tlc.d{border-color:#f28c28;background:#fff4e8}.tlc.s{border-color:#2e7d32;background:#edf7ee}
+.tlc.a{border-color:#2f5d9b;background:#eef4fd}.tlc.d{border-color:#2e9a3f;background:#eef8f0}.tlc.s{border-color:#2e7d32;background:#edf7ee}
 .tlc label small{font-weight:normal;color:#5a6780;display:block}
 .tlc textarea{min-height:110px;background:#fff}
 .tlb{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
@@ -282,7 +282,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 .fotos .fo{width:170px;border:1px solid var(--bo);border-radius:10px;padding:6px;background:#fff;display:flex;flex-direction:column;gap:4px}
 .fotos .fo img{width:100%;height:100px;object-fit:cover;border-radius:6px}
 .fotos .fo .fph{display:flex;align-items:center;justify-content:center;height:100px;background:var(--gr);border-radius:6px;text-decoration:none;font-weight:bold;color:var(--az);text-align:center}
-.fotos .fo .fph.im{position:relative;padding:0;overflow:hidden;background:#000}.fotos .fo .fph.im img{height:120px;border-radius:6px}.fotos .fo .fph.im .nfo{position:absolute;left:4px;top:4px;background:rgba(11,61,145,.85);color:#fff;font-size:11px;border-radius:6px;padding:1px 6px}
+.fotos .fo .fph.im{position:relative;padding:0;overflow:hidden;background:#000}.fotos .fo .fph.im img{height:120px;border-radius:6px}.fotos .fo .fph.im .nfo{position:absolute;left:4px;top:4px;background:rgba(39,52,139,.85);color:#fff;font-size:11px;border-radius:6px;padding:1px 6px}
 .fotos .fo input{font-size:12.5px;padding:6px}
 .fotos .fo .fob{display:flex;gap:4px;align-items:center;justify-content:space-between}
 .fotos .fo .fob button{border:1px solid var(--bo);background:#fff;border-radius:6px;cursor:pointer;padding:3px 8px}
@@ -306,12 +306,20 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 #asisP .ain input{flex:1;min-width:0;padding:6px 8px;font-size:13px}#asisP .ain button{padding:4px 10px!important;font-size:14px!important;min-height:0!important}
 #asisP .ain button{border:0;border-radius:10px;padding:0 12px;font-size:18px;cursor:pointer;background:var(--na);color:#fff}
 #asisP .ain button.oye{background:var(--ro);animation:pulso 1s infinite}
+
+/* Marcas Grupo San Ignacio */
+.marcas{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin:6px 0 10px}
+.marcas img{height:54px;width:auto;object-fit:contain;display:block}
+.marcas .nm{font:800 13px/1.1 Georgia,'Times New Roman',serif;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:#27348b;padding:6px 10px;border-top:3px solid #2e9a3f;border-bottom:3px solid #2e9a3f}
+.marcas .nm small{display:block;font:700 10px Arial,sans-serif;letter-spacing:.3em;color:#2f5d9b;margin-top:2px}
+header .marcas{background:#fff;border-radius:12px;padding:6px 12px;margin:8px 0 4px;gap:10px 18px}
+header .marcas img{height:34px}header .marcas .nm{font-size:10px;padding:3px 7px;border-width:2px}header .marcas .nm small{font-size:8px}
 </style>
 </head>
 <body>
 
 <div id="login" class="card">
-  <h2 style="justify-content:center">Acceso al sistema</h2>
+  <h2 style="justify-content:center">Acceso al sistema</h2><div class="marcas" data-marcas><img data-lg="agroex" alt="Agroexportaciones Chile"><img data-lg="lacteos" alt="Lácteos San Ignacio"><div class="nm">Agrícola<small>San Ignacio S.A.</small></div><div class="nm">Inversiones<small>San Ignacio S.A.</small></div></div>
   <div class="in">
     <p>Reporte e investigación de eventos<br><b>Grupo San Ignacio</b></p>
     <input id="usuario" placeholder="Usuario" autocomplete="username">
@@ -328,6 +336,7 @@ textarea{overflow:hidden;resize:none;min-height:64px}
 <div id="app" class="hide">
 <header>
   <button class="salir" onclick="salir()">Salir</button>
+  <div class="marcas" data-marcas><img data-lg="agroex" alt="Agroexportaciones Chile"><img data-lg="lacteos" alt="Lácteos San Ignacio"><div class="nm">Agrícola<small>San Ignacio S.A.</small></div><div class="nm">Inversiones<small>San Ignacio S.A.</small></div></div>
   <h1>Reporte e Investigación de Eventos</h1>
   <small id="hola"></small>
   <div class="tabs">
@@ -811,7 +820,7 @@ function fDMA(iso){if(!iso)return '';var p=String(iso).split('-');return p.lengt
 function toast(t){document.querySelectorAll('.toast.tt').forEach(function(x){x.remove()});var d=document.createElement('div');d.className='toast tt';d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},Math.min(2500+String(t).length*30,8000))}
 // Aviso que no congela la pantalla: queda visible hasta que se toca "Entendido"
 function aviso(t){var o=document.getElementById('avisoBox');if(o)o.remove();var d=document.createElement('div');d.id='avisoBox';
-  d.style.cssText='position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:99999;background:#fff;border:3px solid #f28c28;border-radius:12px;padding:16px 18px;max-width:92vw;width:380px;box-shadow:0 8px 30px rgba(0,0,0,.35);font-size:15px;color:#1f2733';
+  d.style.cssText='position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:99999;background:#fff;border:3px solid #2e9a3f;border-radius:12px;padding:16px 18px;max-width:92vw;width:380px;box-shadow:0 8px 30px rgba(0,0,0,.35);font-size:15px;color:#1f2733';
   d.innerHTML='<div style="margin-bottom:12px">'+esc(String(t))+'</div><button class="btn" style="width:100%" onclick="this.parentNode.remove()">Entendido</button>';document.body.appendChild(d)}
 function run(){return google.script.run.withFailureHandler(err)}
 function err(e){
@@ -2163,7 +2172,7 @@ function pintarCasos(){
       '<td>'+(dcl?'<span class="est '+dcl+'">'+esc(dec.split(' — ')[0].split(' · ')[0])+'</span>':'<small>—</small>')+'</td>'+
       '<td style="text-align:center;font-weight:bold;color:'+(mp?'var(--ro)':'var(--ve)')+'">'+(c['Datos']?mp:'—')+'</td>'+
       '<td><span class="est '+esc(c['Estado'])+'">'+esc(c['Estado'])+'</span>'+(/^PENDIENTE/.test(c['Alerta grave']||'')?'<br><span class="est SIN">🚨 GRAVE</span>':'')+'</td>'+
-      '<td class="acc" onclick="event.stopPropagation()">'+(c['Estado']==='PAPELERA'?(adm?'<button style="background:#e3f0ff;color:#0b3d91" onclick="restaurar(\''+c['ID']+'\')">↩ Restaurar</button><button style="background:#8e0000;color:#fff" onclick="borrarDef(\''+c['ID']+'\')">Borrar para siempre</button>'+(c['_papHasta']?'<br><small style="color:#8e0000">Se borra solo el '+esc(c['_papHasta'])+'</small>':''):''):(c['Datos']?'<button style="background:#e8f5e9;color:#1b5e20" onclick="descargarCaso(\''+c['ID']+'\')">⬇ PDF</button>':'')+(adm?(c['Estado']==='ARCHIVADO'?'<button style="background:#e3f0ff;color:#0b3d91" onclick="archivar(\''+c['ID']+'\',false)">↩ Desarchivar</button>'
+      '<td class="acc" onclick="event.stopPropagation()">'+(c['Estado']==='PAPELERA'?(adm?'<button style="background:#e3f0ff;color:#27348b" onclick="restaurar(\''+c['ID']+'\')">↩ Restaurar</button><button style="background:#8e0000;color:#fff" onclick="borrarDef(\''+c['ID']+'\')">Borrar para siempre</button>'+(c['_papHasta']?'<br><small style="color:#8e0000">Se borra solo el '+esc(c['_papHasta'])+'</small>':''):''):(c['Datos']?'<button style="background:#e8f5e9;color:#1b5e20" onclick="descargarCaso(\''+c['ID']+'\')">⬇ PDF</button>':'')+(adm?(c['Estado']==='ARCHIVADO'?'<button style="background:#e3f0ff;color:#27348b" onclick="archivar(\''+c['ID']+'\',false)">↩ Desarchivar</button>'
         :'<button style="background:#eceff1;color:#37474f" onclick="archivar(\''+c['ID']+'\',true)">🗄 Archivar</button>')+
         '<button style="background:#ffcdd2;color:#8e0000" onclick="eliminar(\''+c['ID']+'\')" title="Se puede recuperar durante 30 días">🗑 A papelera</button>':'<small>—</small>'))+'</td></tr>'}).join('')
     :'<tr><td colspan="9">'+(e==='PAPELERA'?'La papelera está vacía.':'Sin casos.')+'</td></tr>';
@@ -2215,5 +2224,7 @@ function pintarPanel(){
     :'<tr><td colspan="5" style="color:var(--ve)">✔ Sin medidas vencidas</td></tr>';
 }
 </script>
+<script>(function(){function pon(L){document.querySelectorAll('[data-lg]').forEach(function(i){var s=L&&L[i.getAttribute('data-lg')];if(s)i.src=s;else i.style.display='none'})}
+try{google.script.run.withSuccessHandler(pon).withFailureHandler(function(){pon(null)}).logos()}catch(e){pon(null)}})();</script>
 </body>
 </html>
